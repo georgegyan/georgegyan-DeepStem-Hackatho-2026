@@ -1,33 +1,112 @@
 .navbar {
-  height: 70px;
-  background: #0f172a;
-  color: white;
-
   display: flex;
-  justify-content: space-between;
   align-items: center;
-
-  padding: 0 20px;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 22px;
+  background: linear-gradient(180deg, #0B1220 0%, #0E1626 100%);
+  border-bottom: 1px solid rgba(148, 163, 184, 0.14);
+  flex-wrap: wrap;
 }
 
-.risk-badge {
+.navbar__brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.navbar__mark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: rgba(56, 189, 248, 0.12);
+  color: #38BDF8;
+  flex-shrink: 0;
+}
+
+.navbar__title {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+  min-width: 0;
+}
+
+.navbar__name {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 17px;
+  color: #F1F5F9;
+  letter-spacing: -0.01em;
+}
+
+.navbar__name em {
+  font-style: normal;
+  color: #38BDF8;
+}
+
+.navbar__location {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: #64748B;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.navbar__actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.navbar__refresh {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
   padding: 8px 14px;
-  border-radius: 8px;
-  font-weight: bold;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  background: rgba(148, 163, 184, 0.06);
+  color: #CBD5E1;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 12.5px;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease;
 }
 
-.low {
-  background: green;
+.navbar__refresh:hover:not(:disabled) {
+  background: rgba(56, 189, 248, 0.1);
+  border-color: rgba(56, 189, 248, 0.35);
+  color: #E0F2FE;
 }
 
-.medium {
-  background: goldenrod;
+.navbar__refresh:disabled {
+  opacity: 0.6;
+  cursor: default;
 }
 
-.high {
-  background: orange;
+.navbar__refresh-icon.is-spinning {
+  animation: navbar-spin 0.9s linear infinite;
 }
 
-.critical {
-  background: red;
+@keyframes navbar-spin {
+  to { transform: rotate(360deg); }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    padding: 12px 14px;
+  }
+  .navbar__refresh span {
+    display: none;
+  }
+  .navbar__refresh {
+    padding: 8px;
+  }
 }

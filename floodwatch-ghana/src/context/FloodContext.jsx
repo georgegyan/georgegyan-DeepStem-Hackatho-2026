@@ -1,5 +1,6 @@
-import { useState } from "react";
-import { FloodContext } from "./FloodContextContext";
+import { createContext, useState } from "react";
+
+const FloodContext = createContext();
 
 export default function FloodProvider({ children }) {
   const [riskLevel, setRiskLevel] = useState("LOW");
