@@ -1,19 +1,23 @@
-/* eslint-disable react-refresh/only-export-components */
-import { createContext, useState } from "react";
-
-export const FloodContext = createContext();
+import { useState } from "react";
+import { FloodContext } from "./FloodContextContext";
 
 export default function FloodProvider({ children }) {
-  const [location, setLocation] = useState(null);
-  const [destination, setDestination] = useState(null);
+  const [riskLevel, setRiskLevel] = useState("LOW");
+  const [weatherData, setWeatherData] = useState(null);
+  const [reports, setReports] = useState([]);
+  const [smsAlerts, setSmsAlerts] = useState([]);
 
   return (
     <FloodContext.Provider
       value={{
-        location,
-        setLocation,
-        destination,
-        setDestination,
+        riskLevel,
+        setRiskLevel,
+        weatherData,
+        setWeatherData,
+        reports,
+        setReports,
+        smsAlerts,
+        setSmsAlerts,
       }}
     >
       {children}
