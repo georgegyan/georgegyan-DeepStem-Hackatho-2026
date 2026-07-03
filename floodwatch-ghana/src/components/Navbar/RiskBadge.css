@@ -1,0 +1,86 @@
+.risk-badge {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 16px 7px 12px;
+  border-radius: 999px;
+  background: var(--risk-color, #334155);
+  color: var(--risk-text, #fff);
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.15) inset, 0 6px 16px -6px rgba(0, 0, 0, 0.45);
+}
+
+.risk-badge--pending {
+  background: #334155;
+  color: #cbd5e1;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.risk-badge__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #94a3b8;
+  animation: rb-blink 1.4s ease-in-out infinite;
+}
+
+.risk-badge__icon {
+  font-size: 14px;
+  line-height: 1;
+}
+
+.risk-badge__label {
+  line-height: 1;
+}
+
+.risk-badge__stale {
+  margin-left: 4px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.28);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.05em;
+}
+
+.risk-badge__ping {
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  box-shadow: 0 0 0 0 var(--risk-color, #334155);
+  animation: rb-ping 1.8s cubic-bezier(0.4, 0, 0.3, 1) infinite;
+  pointer-events: none;
+}
+
+.risk-badge--pulsing {
+  animation: rb-glow 1.8s ease-in-out infinite;
+}
+
+@keyframes rb-ping {
+  0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--risk-color) 55%, transparent); }
+  100% { box-shadow: 0 0 0 10px transparent; }
+}
+
+@keyframes rb-glow {
+  0%, 100% { filter: brightness(1); }
+  50% { filter: brightness(1.12); }
+}
+
+@keyframes rb-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .risk-badge__ping,
+  .risk-badge--pulsing,
+  .risk-badge__dot {
+    animation: none !important;
+  }
+}
