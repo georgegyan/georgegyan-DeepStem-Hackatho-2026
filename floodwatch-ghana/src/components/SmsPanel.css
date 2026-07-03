@@ -1,0 +1,211 @@
+/* =============================================================================
+   SmsPanel.css — Styles for the SMS Alert Simulation panel
+   FloodWatch Ghana · Developer 5 — SMS Simulation
+   ============================================================================= */
+
+/* ── Panel container ─────────────────────────────────────────────────────── */
+.sms-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  background: #0f172a;           /* deep navy */
+  border: 1px solid #1e293b;
+  border-radius: 16px;
+  overflow: hidden;
+  font-family: "Inter", system-ui, sans-serif;
+  color: #e2e8f0;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.45);
+  min-width: 300px;
+}
+
+/* ── Panel header ────────────────────────────────────────────────────────── */
+.sms-panel__header {
+  padding: 18px 20px 14px;
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  border-bottom: 1px solid #1e293b;
+}
+
+.sms-panel__title {
+  margin: 0 0 4px;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  color: #f8fafc;
+}
+
+.sms-panel__subtitle {
+  margin: 0;
+  font-size: 0.75rem;
+  color: #94a3b8;
+}
+
+/* ── Panel body ──────────────────────────────────────────────────────────── */
+.sms-panel__body {
+  padding: 12px 12px 8px;
+  flex: 1;
+  overflow-y: auto;
+  max-height: 480px;
+  scrollbar-width: thin;
+  scrollbar-color: #334155 transparent;
+}
+
+.sms-panel__body::-webkit-scrollbar { width: 4px; }
+.sms-panel__body::-webkit-scrollbar-track { background: transparent; }
+.sms-panel__body::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+
+/* ── Alert list ──────────────────────────────────────────────────────────── */
+.sms-panel__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* ── Empty state ─────────────────────────────────────────────────────────── */
+.sms-panel__empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 36px 20px;
+  text-align: center;
+}
+
+.sms-panel__empty-icon {
+  font-size: 2rem;
+  line-height: 1;
+  filter: drop-shadow(0 0 8px #16A34A88);
+}
+
+.sms-panel__empty-text {
+  margin: 0;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #4ade80;    /* green — safe state, matches #16A34A palette */
+  letter-spacing: 0.02em;
+}
+
+/* ── Panel footer / disclaimer ───────────────────────────────────────────── */
+.sms-panel__footer {
+  padding: 10px 20px 14px;
+  border-top: 1px solid #1e293b;
+  background: #0f172a;
+}
+
+.sms-panel__disclaimer {
+  margin: 0;
+  font-size: 0.7rem;
+  color: #64748b;
+  line-height: 1.5;
+}
+
+.sms-panel__link {
+  color: #38bdf8;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.sms-panel__link:hover { color: #7dd3fc; }
+
+/* ── Alert Card ──────────────────────────────────────────────────────────── */
+.sms-card {
+  background: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 12px;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  animation: sms-card-in 0.3s ease both;
+}
+
+.sms-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+@keyframes sms-card-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Card header */
+.sms-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.sms-card__recipient {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sms-card__icon {
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.sms-card__name {
+  margin: 0;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #f1f5f9;
+}
+
+.sms-card__phone {
+  margin: 2px 0 0;
+  font-size: 0.75rem;
+  color: #94a3b8;
+  font-family: "Courier New", monospace;
+  letter-spacing: 0.05em;
+}
+
+/* Risk badge — colour set via inline style; text label always present (NFR-05) */
+.sms-card__badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 99px;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #ffffff;
+  white-space: nowrap;
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+}
+
+/* Message preview */
+.sms-card__message-wrap {
+  background: #0f172a;
+  border: 1px solid #1e293b;
+  border-radius: 8px;
+  padding: 10px 12px;
+}
+
+.sms-card__message {
+  margin: 0;
+  font-size: 0.75rem;
+  color: #cbd5e1;
+  line-height: 1.6;
+  font-family: "Courier New", monospace;
+}
+
+/* Card footer */
+.sms-card__footer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.sms-card__timestamp {
+  font-size: 0.68rem;
+  color: #475569;
+  letter-spacing: 0.03em;
+}
